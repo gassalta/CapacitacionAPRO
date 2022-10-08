@@ -1,0 +1,37 @@
+<?php
+session_start();
+if(empty($_SESSION['Nombre'])) {
+  header('Location: cerrarSesion.php');
+  exit;
+}
+require_once 'funciones/controlTiempoSesion.php';
+if (tiempoCumplido()) {
+    header('Location: cerrarSesion.php');
+    exit;
+}
+require_once 'funciones/conexion.php';
+require_once 'funciones/baseDeDatos.php';
+$Tipo=$_REQUEST['Tipo'];
+$Id=$_REQUEST['Id'];
+$Aprendizaje=$_REQUEST['NombreAprendizaje'];
+$IdContenido=$_REQUEST['IdContenido'];
+if ($Tipo=='M')
+  {
+   
+   UpdateAprendizaje($Id,$Aprendizaje);
+  
+   
+  }	  elseif($Tipo=='E')
+  {
+	 UpdateEliminarAprendizaje($Id);
+  }else{
+	  
+	  InsertAprendizaje($IdContenido,$Aprendizaje);
+  }
+   header('Location: administrarContenidosyAprendizajes.php');
+   exit;
+
+
+
+
+?>

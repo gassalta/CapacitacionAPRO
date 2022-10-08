@@ -1,0 +1,14 @@
+th, td {
+ 
+  padding: 1px 0px 1px 0px;/*Arriba Derecha Abajo Izquierda*/
+  text-align: center;
+}
+
+.btn-circle {
+  
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+  
+}
+

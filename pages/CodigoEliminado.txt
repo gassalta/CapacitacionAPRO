@@ -1,0 +1,1300 @@
+*****INDEX*********
+
+<?php
+//Configuro la zona horaria local
+date_default_timezone_set("America/Argentina/Buenos_Aires");
+//Verifico que haya una sesión abierta
+session_start();
+if(empty($_SESSION['Nombre'])) {
+  header('Location: cerrarSesion.php');
+  exit;
+}
+//Verifico tiempo de sesion
+require_once 'funciones/controlTiempoSesion.php';
+if (tiempoCumplido()) {
+    header('Location: cerrarSesion.php');
+    exit;
+}
+$_SESSION['DNIEstudianteElegido'] = "";
+$_SESSION['IdEstudianteSeleccionado'] = "";
+$_SESSION['IdEElegido'] = "";
+$_SESSION['IdEspCurrSeleccionado'] = "";
+$_SESSION['IdECElegido'] = "";
+$_SESSION['DNIDocenteElegido'] = "";
+$_SESSION['Envia'] = "";
+$_SESSION['IdDElegido'] = "";
+$_SESSION['IdCursoSeleccionado'] = "";
+$_SESSION['AnioCursoSeleccionado'] = "";
+$_SESSION['DivisionCursoSeleccionado'] = "";
+$_SESSION['IdCursoElegido'] = "";
+$_SESSION['CursoEleg'] = "";
+$_SESSION['EstudEleg'] = "";
+$_SESSION['CursoEle'] = "";
+$_SESSION['EstudEle'] = "";
+$_SESSION['InstanciaEle'] = "";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <?php
+    //llamo al encabezado
+        require_once 'encabezado.php';
+    ?>
+    
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+                <?php
+                //Llamo a los menúes y funciones necesarias
+                require_once 'top.php';
+                require_once 'menuDerecho.php';
+                require_once 'funciones/DatosUsuario.php';
+                require_once 'menuLateral.php';
+            ?>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header" align="center">Novedades PRoa</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+			<p> No hay novedades hoy...</p>
+               <!-- <center>
+                <img src="images/logos Proa vigentes -villa maría de río seco-COLOR-02.png" width="500" height="500" />
+                </center>-->
+                
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                        <!--    <i class="fa fa-bar-chart-o fa-fw"></i> Estudiantes en riesgo por Espacio Curricular
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Actions
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="#">Action</a>
+                                        </li>
+                                        <li><a href="#">Another action</a>
+                                        </li>
+                                        <li><a href="#">Something else here</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- /.panel-heading -->
+                     <!--   <div class="panel-body">
+                            <div id="morris-area-chart"></div>
+                        </div> -->
+                        <!-- /.panel-body -->
+                   <!-- </div> -->
+                    <!-- /.panel -->
+                   <!-- <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Estudiantes en riesgo por Espacio Curricular
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Actions
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="#">Action</a>
+                                        </li>
+                                        <li><a href="#">Another action</a>
+                                        </li>
+                                        <li><a href="#">Something else here</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Separated link</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- /.panel-heading -->
+                       <!-- <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Date</th>
+                                                    <th>Time</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>3326</td>
+                                                    <td>10/21/2013</td>
+                                                    <td>3:29 PM</td>
+                                                    <td>$321.33</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3325</td>
+                                                    <td>10/21/2013</td>
+                                                    <td>3:20 PM</td>
+                                                    <td>$234.34</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3324</td>
+                                                    <td>10/21/2013</td>
+                                                    <td>3:03 PM</td>
+                                                    <td>$724.17</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3323</td>
+                                                    <td>10/21/2013</td>
+                                                    <td>3:00 PM</td>
+                                                    <td>$23.71</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3322</td>
+                                                    <td>10/21/2013</td>
+                                                    <td>2:49 PM</td>
+                                                    <td>$8345.23</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3321</td>
+                                                    <td>10/21/2013</td>
+                                                    <td>2:23 PM</td>
+                                                    <td>$245.12</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3320</td>
+                                                    <td>10/21/2013</td>
+                                                    <td>2:15 PM</td>
+                                                    <td>$5663.54</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3319</td>
+                                                    <td>10/21/2013</td>
+                                                    <td>2:13 PM</td>
+                                                    <td>$943.45</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div> -->
+                                    <!-- /.table-responsive -->
+                              <!--  </div> -->
+                                <!-- /.col-lg-4 (nested) -->
+                            <!--    <div class="col-lg-8">
+                                    <div id="morris-bar-chart"></div>
+                                </div> -->
+                                <!-- /.col-lg-8 (nested) -->
+                          <!--  </div> -->
+                            <!-- /.row -->
+                      <!--  </div> -->
+                        <!-- /.panel-body -->
+                 <!--   </div> -->
+                    <!-- /.panel -->
+                 <!--   <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-clock-o fa-fw"></i> Responsive Timeline
+                        </div> -->
+                        <!-- /.panel-heading -->
+                    <!--    <div class="panel-body">
+                            <ul class="timeline">
+                                <li>
+                                    <div class="timeline-badge"><i class="fa fa-check"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
+                                            <p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago via Twitter</small>
+                                            </p>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam dolor perspiciatis omnis exercitationem. Beatae, officia pariatur? Est cum veniam excepturi. Maiores praesentium, porro voluptas suscipit facere rem dicta, debitis.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge warning"><i class="fa fa-credit-card"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dolorem quibusdam, tenetur commodi provident cumque magni voluptatem libero, quis rerum. Fugiat esse debitis optio, tempore. Animi officiis alias, officia repellendus.</p>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium maiores odit qui est tempora eos, nostrum provident explicabo dignissimos debitis vel! Adipisci eius voluptates, ad aut recusandae minus eaque facere.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge danger"><i class="fa fa-bomb"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus numquam facilis enim eaque, tenetur nam id qui vel velit similique nihil iure molestias aliquam, voluptatem totam quaerat, magni commodi quisquam.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates est quaerat asperiores sapiente, eligendi, nihil. Itaque quos, alias sapiente rerum quas odit! Aperiam officiis quidem delectus libero, omnis ut debitis!</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge info"><i class="fa fa-save"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis minus modi quam ipsum alias at est molestiae excepturi delectus nesciunt, quibusdam debitis amet, beatae consequuntur impedit nulla qui! Laborum, atque.</p>
+                                            <hr>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="fa fa-gear"></i> <span class="caret"></span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#">Action</a>
+                                                    </li>
+                                                    <li><a href="#">Another action</a>
+                                                    </li>
+                                                    <li><a href="#">Something else here</a>
+                                                    </li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="#">Separated link</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi fuga odio quibusdam. Iure expedita, incidunt unde quis nam! Quod, quisquam. Officia quam qui adipisci quas consequuntur nostrum sequi. Consequuntur, commodi.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge success"><i class="fa fa-graduation-cap"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt obcaecati, quaerat tempore officia voluptas debitis consectetur culpa amet, accusamus dolorum fugiat, animi dicta aperiam, enim incidunt quisquam maxime neque eaque.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div> -->
+                        <!-- /.panel-body -->
+                 <!--   </div> -->
+                    <!-- /.panel -->
+             <!--   </div> -->
+                <!-- /.col-lg-8 -->
+             <!--   <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                        </div> -->
+                        <!-- /.panel-heading -->
+                    <!--    <div class="panel-body">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-comment fa-fw"></i> New Comment
+                                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-tasks fa-fw"></i> New Task
+                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-bolt fa-fw"></i> Server Crashed!
+                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-warning fa-fw"></i> Server Not Responding
+                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-shopping-cart fa-fw"></i> New Order Placed
+                                    <span class="pull-right text-muted small"><em>9:49 AM</em>
+                                    </span>
+                                </a>
+                                <a href="#" class="list-group-item">
+                                    <i class="fa fa-money fa-fw"></i> Payment Received
+                                    <span class="pull-right text-muted small"><em>Yesterday</em>
+                                    </span>
+                                </a>
+                            </div> -->
+                            <!-- /.list-group -->
+                        <!--    <a href="#" class="btn btn-default btn-block">View All Alerts</a>
+                        </div> -->
+                        <!-- /.panel-body -->
+                <!--    </div> -->
+                    <!-- /.panel -->
+                <!--    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
+                        </div>
+                        <div class="panel-body">
+                            <div id="morris-donut-chart"></div>
+                            <a href="#" class="btn btn-default btn-block">View Details</a>
+                        </div> -->
+                        <!-- /.panel-body -->
+                 <!--   </div> -->
+                    <!-- /.panel -->
+                 <!--   <div class="chat-panel panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-comments fa-fw"></i> Chat
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown-menu slidedown">
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-refresh fa-fw"></i> Refresh
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-check-circle fa-fw"></i> Available
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-times fa-fw"></i> Busy
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-clock-o fa-fw"></i> Away
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-sign-out fa-fw"></i> Sign Out
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div> -->
+                        <!-- /.panel-heading -->
+                     <!--   <div class="panel-body">
+                            <ul class="chat">
+                                <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font">Jack Sparrow</strong>
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
+                                            </small>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <small class=" text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
+                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="left clearfix">
+                                    <span class="chat-img pull-left">
+                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <strong class="primary-font">Jack Sparrow</strong>
+                                            <small class="pull-right text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 14 mins ago</small>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="right clearfix">
+                                    <span class="chat-img pull-right">
+                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
+                                    </span>
+                                    <div class="chat-body clearfix">
+                                        <div class="header">
+                                            <small class=" text-muted">
+                                                <i class="fa fa-clock-o fa-fw"></i> 15 mins ago</small>
+                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                                        </div>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div> -->
+                        <!-- /.panel-body -->
+                    <!--    <div class="panel-footer">
+                            <div class="input-group">
+                                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning btn-sm" id="btn-chat">
+                                        Send
+                                    </button>
+                                </span>
+                            </div>
+                        </div> -->
+                        <!-- /.panel-footer -->
+                    </div>
+                    <!-- /.panel .chat-panel -->
+                </div>
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="../vendor/raphael/raphael.min.js"></script>
+    <script src="../vendor/morrisjs/morris.min.js"></script>
+    <script src="../data/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+</body>
+
+</html>
+************************menuLATERAL**********************
+
+<?php
+//Conecto a la base de datos
+require_once 'funciones/conexion.php';
+$MiConexion=ConexionBD();
+//listo los espacios curriculares que dicta el docente
+require_once 'funciones/listarEspaciosCurricularesXDocente.php';
+$EspsCurrs = ListarEspCurrXDocente($MiConexion,$_SESSION['Id']);
+$CantidadEspCurr = count($EspsCurrs);
+?>
+<div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="index.php"><i class="fa fa-home fa-fw"></i> Panel Principal</a>
+                        </li>
+                        
+                            <?php
+                            //De acuerdo a la categoría del usuario activo, le muestro las opciones de lo que puede acceder el mismo
+                                if ($_SESSION['Categoria']=='Coordinador/a' || $_SESSION['Categoria']=='Secretario/a') {?>
+                                    <li>
+                                        <a href="administrarDocentes.php"><i class="glyphicon glyphicon-user fa-fw"></i>  Docentes</a>
+                                    </li>
+                            <?php  }
+                            ?>
+                        <?php
+                                if ($_SESSION['Categoria']!='Docente') {?>
+                                    <li>
+                                        <a href="administrarEstudiantes.php"><i class="glyphicon glyphicon-education fa-fw"></i>  Estudiantes</a>
+                                    </li>
+                            <?php }
+                            ?>
+                            <?php
+                                if ($_SESSION['Categoria']=='Preceptor/a') {?>
+                                    <li>
+                                        <a href="administrarAsistencias.php"><i class="glyphicon glyphicon-ok-circle fa-fw"></i>  Asistencias</a>
+                                    </li>
+                            <?php }
+                            ?>
+                            <?php
+                                if ($_SESSION['Categoria']!='Docente') {?>
+                                    <li>
+                                        <a href="administrarCursos.php"><i class="glyphicon glyphicon-folder-open fa-fw"></i>  Cursos</a>
+                                    </li>
+                            <?php }
+                            ?>
+
+                        <?php
+                                if ($_SESSION['Categoria']=='Coordinador/a' || $_SESSION['Categoria']=='Secretario/a') {?>
+                                    <li>
+                                        <a href="administrarEspaciosCurriculares.php"><i class="glyphicon glyphicon-briefcase fa-fw"></i>  Espacios Curriculares</a>
+                                    </li>
+                            <?php }
+                            ?>
+
+                            <?php
+                             for ($i=0; $i < $CantidadEspCurr; $i++) { ?>
+                                <li>
+                                <a href="#"><i class="glyphicon glyphicon-pushpin fa-fw"></i>  <?php echo $EspsCurrs[$i]['NOMBREESPACCURRIC'];  ?><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="administrarContenidosYAprendizajes.php">Contenidos y Aprendizajes</a>
+                                </li>
+                                <li>
+                                    <a href="administrarEvaluaciones.php">Evaluaciones</a>
+                                </li>
+                                <li>
+                                    <a href="administrarNotasFinales.php">Notas Finales</a>
+                                </li>
+                            </ul>
+                            </li>
+                           <?php } ?>
+
+                           <?php
+                                if ($_SESSION['Categoria']=='Coordinador/a') {?>
+                                    <li>
+                                        <a href="administrarEvaluaciones.php"><i class="glyphicon glyphicon-list-alt fa-fw"></i>  Evaluaciones</a>
+                                    </li>
+                                    <li>
+                                        <a href="administrarNotasFinales.php"><i class="glyphicon glyphicon-edit fa-fw"></i>  Notas Finales</a>
+                                    </li>
+                            <?php }
+                            ?>
+
+                            <?php if ($_SESSION['Categoria']!='Docente') { ?>
+                                <li>
+                            <a href="#"><i class="fa fa-stack-overflow fa-fw"></i>  Libretas e Informes<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <?php
+                                if ($_SESSION['Categoria']=='Coordinador/a') {?>
+                                <li>
+                                    <a href="libretasCalificaciones.php">Libretas de Calificaciones</a>
+                                </li>
+                                <?php }
+                                if ($_SESSION['Categoria']=='Secretario/a') { ?>
+                                <li>
+                                    <a href="racs.php">RAC</a>
+                                </li>
+                                <?php }
+                                if ($_SESSION['Categoria']=='Coordinador/a' || $_SESSION['Categoria']=='Preceptor/a') { ?>
+                                <li>
+                                    <a href="informesContenidosYAprendizajes.php">Informes de Contenidos y Aprendizajes</a>
+                                </li>
+                                <?php }
+                            ?>
+                            </ul>
+                            </li>
+                           <?php } ?>
+                            
+                            <?php
+                                if ($_SESSION['Categoria']=='Coordinador/a') {?>
+                                    <li>
+                                        <a href="administrarConceptosDocentes.php"><i class="fa fa-leanpub fa-fw"></i>  Conceptos Docentes</a>
+                                    </li>
+                            <?php }
+                            ?>
+
+
+*******************ADMINISTRAR DOCENTES*******************
+
+<?php
+//Verifico si está abierta la sesion
+session_start();
+if(empty($_SESSION['Nombre'])) {
+  header('Location: cerrarSesion.php');
+  exit;
+}
+//Verifico tiempo de sesion
+require_once 'funciones/controlTiempoSesion.php';
+if (tiempoCumplido()) {
+    header('Location: cerrarSesion.php');
+    exit;
+}
+//Conecto con la base de datos
+require_once 'funciones/conexion.php';
+$MiConexion=ConexionBD();
+$_SESSION['DNIDocenteElegido'] = "";
+$_SESSION['Envia'] = "";
+$_SESSION['IdDElegido'] = "";
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <?php
+        require_once 'encabezado.php';
+    ?>
+
+   
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+            <?php
+                require_once 'top.php';
+                require_once 'menuDerecho.php';
+                require_once 'funciones/DatosUsuario.php';
+                require_once 'menuLateral.php';
+            ?>
+
+        
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Docentes</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            
+    <?php
+    //Listo los docentes
+        require_once 'funciones/listarDocentes.php';
+        $Listado=array();
+        $Listado = Listar_Docentes($MiConexion);
+        $CantidadDocentes = count($Listado);
+    ?>
+    <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <h3 class="tile-title">Listado Docentes (<?php echo $CantidadDocentes; ?>)</h3>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Apellido</th>
+                    <th>Nombre</th>
+                    <th>DNI</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Nro Legajo Junta</th>
+                    <th>Título</th>
+                    <th>Fecha Escalafón</th>
+                    <th>Categoría</th>
+                    <th>E-mail</th>
+                    <th>Último Ingreso</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                    
+
+                        <?php
+                        //Cargo a la tabla el listado de los docentes
+                            for ($i=0; $i < $CantidadDocentes; $i++) { ?>
+                                <tr class="table-info">
+                                    <td><?php echo $Listado[$i]['ID']; ?></td>
+                                    <td><?php echo $Listado[$i]['APELLIDO']; ?></td>
+                                    <td><?php echo $Listado[$i]['NOMBRE']; ?></td>
+                                    <td><?php echo $Listado[$i]['DNI']; ?></td>
+                                    <td><?php echo $Listado[$i]['FECHANACIM']; ?></td>
+                                    <td><?php echo $Listado[$i]['NROLEGAJOJUNTA']; ?></td>
+                                    <td><?php echo $Listado[$i]['TITULO']; ?></td>
+                                    <td><?php echo $Listado[$i]['FECHAESCALAFON']; ?></td>
+                                    <td><?php echo $Listado[$i]['CATEGORIA']; ?></td>
+                                    <td><?php echo $Listado[$i]['MAIL']; ?></td>
+                                    <td><?php echo $Listado[$i]['ULTINGRESO']; ?></td>
+                                </tr> 
+                         <?php   }
+                        ?>
+                        
+                        
+                     
+                 
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        
+      </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Acciones
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form role="form" method="post">
+                                        <?php 
+
+                                           /* if (!empty($_POST['Buscar'])) {
+                                                if (!empty($_POST['Id'])) {
+                                                    require_once 'funciones/buscarDocente.php';
+                                                    $DocenteBuscado = buscarDocente($MiConexion,$_POST['Id']);
+                                                    $DocenteEncontrado = 1;
+                                                } else {
+                                                    ?>
+                <div class="alert alert-dismissible alert-danger">
+                  <strong>Ingrese número de docente</strong>
+                </div>
+              </div>
+             <?php
+                                                }
+                                            }
+
+                                            if (!empty($_POST['Cancelar'])) {
+                                                $accion = 0;
+                                            }
+
+                                            if (!empty($_POST['Confirmar'])) {
+                                                require_once 'funciones/verificarCamposDocente.php';
+                                                $mensaje = '';
+                                                if ($accion == 1 || $accion == 2) {
+                                                    $mensaje = verificarCamposDoc();
+                                                }
+                                                if ($mensaje == '') {
+                                                    require_once 'funciones/guardarDocente.php';
+                                                    if ($accion == 1){
+                                                        if (docenteNuevo($MiConexion,$_POST['Apellido'],$_POST['Nombre'],$_POST['DNI'],$_POST['FechaNacim'],$_POST['NroLegajoJunta'],$_POST['Titulo'],$_POST['FechaEscalafon'],$_POST['categorias'],$_POST['Apellido'].$_POST['DNI'],$_POST['Mail'])) {?>
+                                                            <div class="bs-component">
+                <div class="alert alert-dismissible alert-success">
+                  <strong>Docente nuevo guardado!</strong>
+                </div>
+              </div>
+                                                    <?php    }
+                                                        }
+                                                        if ($accion == 2){
+                                                            $id= $_POST['Id'];
+                                                        if (modificarDocente($MiConexion,$id,$_POST['Apellido'],$_POST['Nombre'],$_POST['DNI'],$_POST['FechaNacim'],$_POST['NroLegajoJunta'],$_POST['Titulo'],$_POST['FechaEscalafon'],$_POST['categorias'],$_POST['Mail'])) {?>
+                                                            <div class="bs-component">
+                <div class="alert alert-dismissible alert-success">
+                  <strong>Docente modificado correctamente!</strong>
+                </div>
+              </div>
+                                                    <?php    }
+                                                        }
+                                                    } else {
+                                                        ?>
+                <div class="alert alert-dismissible alert-danger">
+                  <strong><?php echo $mensaje; ?></strong>
+                </div>
+              </div>
+             <?php
+                                                }
+
+                                                if ($accion == 3){
+                                                    $id= $_POST['Id'];
+                                                    $mensaje = eliminarDocente($MiConexion,$id);
+                                                    ?>
+                <div class="alert alert-dismissible alert-danger">
+                  <strong><?php echo $mensaje; ?></strong>
+                </div>
+              </div>
+             <?php
+                                                }
+
+                                            }
+
+                                                            
+
+                                            //echo $accion;
+                                      */  ?>
+                                                <button class="btn btn-default" type="submit" name="DocenteNuevo" formaction="DocenteNuevo.php">Nuevo
+                                                </button>
+                                                <label>    </label>
+                                                <button class="btn btn-default" type="submit" name="ModificarDocente" formaction="modificarDocente.php">Modificar
+                                                </button>
+                                                <label>    </label>
+                                                <button class="btn btn-default" type="submit" name="EliminarDocente" formaction="eliminarDocente.php">Eliminar
+                                                </button>
+                                                <button class="btn btn-default" type="submit" name="BuscarDocente" formaction="buscarUnDocente.php">Buscar
+                                                </button>
+                                            <!--     <label style="<?php //if ($accion == 2 || $accion ==3) { echo "visibility=visible"; } else { echo "visibility=hidden"; } ?>">Nro</label>
+                                            <input class="form-control" name="Id"  style="<?php //if ($accion == 2 || $accion ==3) { echo "visibility:visible"; } else { echo "visibility:hidden"; } ?>">
+                                            <button class="btn btn-default" type="submit" name="Buscar">Buscar
+                                                </button>
+                                        
+                                        <div class="form-group">
+                                            <label>Apellido*</label>
+                                            <input class="form-control" name="Apellido" <?php if ($DocenteEncontrado == 1) { ?>
+                                                value="<?php echo $DocenteBuscado['APELLIDO']; ?>"
+                                          <?php  }?> >
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Nombre*</label>
+                                            <input class="form-control" name="Nombre" <?php if ($DocenteEncontrado == 1) { ?>
+                                                value="<?php echo $DocenteBuscado['NOMBRE']; ?>"
+                                          <?php  }?>>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>DNI*</label>
+                                            <input class="form-control" name="DNI" <?php if ($DocenteEncontrado == 1) { ?>
+                                                value="<?php echo $DocenteBuscado['DNI']; ?>"
+                                          <?php  }?>>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Fecha de Nacimiento*</label>
+                                            <input id="date" type="date" name="FechaNacim" <?php if ($DocenteEncontrado == 1) { ?>
+                                                value="<?php echo $DocenteBuscado['FECHANACIM']; ?>"
+                                          <?php  }?>>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Número de Legajo en Junta</label>
+                                            <input class="form-control" name="NroLegajoJunta" <?php if ($DocenteEncontrado == 1) { ?>
+                                                value="<?php echo $DocenteBuscado['NROLEGAJOJUNTA']; ?>"
+                                          <?php  }?>>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Título*</label>
+                                            <textarea class="form-control" rows="3" name="Titulo" <?php if ($DocenteEncontrado == 1) { ?>
+                                                value="<?php echo $DocenteBuscado['TITULO']; ?>"
+                                          <?php  }?>></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Fecha de Escalafón</label>
+                                            <input id="date" type="date" name="FechaEscalafon" <?php if ($DocenteEncontrado == 1) { ?>
+                                                value="<?php echo $DocenteBuscado['FECHAESCALAFON']; ?>"
+                                          <?php  }?>>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Categoría*</label>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="categorias" id="1" value="1" <?php if ($DocenteEncontrado == 1) { if($DocenteBuscado['CATEGORIA'] == 1){ ?>
+                                                        checked
+                                          <?php } }?>>Coordinador/a
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="categorias" id="2" value="2" <?php if ($DocenteEncontrado == 1) { if($DocenteBuscado['CATEGORIA'] == 2){ ?>
+                                                        checked
+                                          <?php } }?>>Secretario/a
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="categorias" id="3" value="3" <?php if ($DocenteEncontrado == 1) { if($DocenteBuscado['CATEGORIA'] == 3){ ?>
+                                                        checked
+                                          <?php } }?>>Preceptor/a
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" name="categorias" id="4" value="4"  <?php if ($DocenteEncontrado == 1) { if($DocenteBuscado['CATEGORIA'] ==4) { ?>
+                                                        checked
+                                          <?php } }else { ?> checked <?php }?>>Docente
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>e-mail*</label>
+                                            <input class="form-control" name="Mail" <?php if ($DocenteEncontrado == 1) { ?>
+                                                value="<?php echo $DocenteBuscado['MAIL']; ?>"
+                                          <?php  }?>>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="disabledSelect">Último Ingreso</label>
+                                                <input class="form-control" id="disabledInput" type="text" disabled name="UltIngreso" <?php if ($DocenteEncontrado == 1) { ?>
+                                                value="<?php echo $DocenteBuscado['ULTINGRESO']; ?>"
+                                          <?php  }?>>
+                                            </div>
+                                        <label>* Campos Obligatorios</label>
+                                        <button type="submit" class="btn btn-default" value="Confirmar" name="Confirmar" style="background-color: #7b16b6; color: white;" <?php if ($accion==2 || $accion==3) { ?>
+                                            onClick="return confirm ('Seguro que desea modificar/eliminar docente?');"
+                                       <?php } ?> >Confirmar</button>
+                                        <button type="submit" class="btn btn-default" value="Cancelar" name="Cancelar" style="background-color: #fb0000; color: white;" >Cancelar</button>
+                                        <br>
+                                        <center>
+                                            <div>
+                                                <button type="submit" class="btn btn-default" value="EspCurr" name="EspCurr" style="background-color: #888ffc">Espacios Curriculares a Cargo</button>
+                                            </div>
+                                        </center>
+                                        
+                                -->
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+</body>
+
+</html>
+
+
+                       
+                    </ul>
+                </div> 
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+		
+		***************buscarUnDocente********************
+		
+		<?php
+//Verifico si está abierta la sesion
+session_start();
+if(empty($_SESSION['Nombre'])) {
+  header('Location: cerrarSesion.php');
+  exit;
+}
+//Verifico tiempo de sesion
+require_once 'funciones/controlTiempoSesion.php';
+if (tiempoCumplido()) {
+    header('Location: cerrarSesion.php');
+    exit;
+}
+//Conecto con la base de datos
+require_once 'funciones/conexion.php';
+$MiConexion=ConexionBD();
+
+//Declaro variables
+$mensaje='';
+$DocenteBuscado=array();
+$DocenteEncontrado = 0; //0-No - 1-Sí
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <?php
+        require_once 'encabezado.php';
+    ?>
+
+   
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+            <?php
+                require_once 'top.php';
+                require_once 'menuDerecho.php';
+                require_once 'funciones/DatosUsuario.php';
+                require_once 'menuLateral.php';
+            ?>
+
+        
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Docentes</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            
+    <?php
+    //Listo los docentes
+        require_once 'funciones/listarDocentes.php';
+        $Listado=array();
+        $Listado = Listar_Docentes($MiConexion);
+        $CantidadDocentes = count($Listado);
+    ?>
+    <div class="row">
+        <div class="col-md-12">
+          <div class="tile">
+            <h3 class="tile-title">Listado Docentes (<?php echo $CantidadDocentes; ?>)</h3>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Apellido</th>
+                    <th>Nombre</th>
+                    <th>DNI</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Nro Legajo Junta</th>
+                    <th>Título</th>
+                    <th>Fecha Escalafón</th>
+                    <th>Categoría</th>
+                    <th>e-mail</th>
+                    <th>Último Ingreso</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                    
+
+                        <?php
+                        //Cargo a la tabla el listado de los docentes
+                            for ($i=0; $i < $CantidadDocentes; $i++) { ?>
+                                <tr class="table-info">
+                                    <td><?php echo $Listado[$i]['ID']; ?></td>
+                                    <td><?php echo $Listado[$i]['APELLIDO']; ?></td>
+                                    <td><?php echo $Listado[$i]['NOMBRE']; ?></td>
+                                    <td><?php echo $Listado[$i]['DNI']; ?></td>
+                                    <td><?php echo $Listado[$i]['FECHANACIM']; ?></td>
+                                    <td><?php echo $Listado[$i]['NROLEGAJOJUNTA']; ?></td>
+                                    <td><?php echo $Listado[$i]['TITULO']; ?></td>
+                                    <td><?php echo $Listado[$i]['FECHAESCALAFON']; ?></td>
+                                    <td><?php echo $Listado[$i]['CATEGORIA']; ?></td>
+                                    <td><?php echo $Listado[$i]['MAIL']; ?></td>
+                                    <td><?php echo $Listado[$i]['ULTINGRESO']; ?></td>
+                                </tr> 
+                         <?php   }
+                        ?>
+                        
+                        
+                     
+                 
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        
+      </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Datos Docente
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form role="form" method="post">
+                                        <?php 
+                                            //Si cancela vuelvo a administrarDocentes
+                                            if (!empty($_POST['Cancelar'])) {
+                                                //$accion = 0;
+                                                header('Location: administrarDocentes.php');
+                                            }
+
+                                            if (!empty($_POST['Buscar'])) {
+                                                require_once 'funciones/buscarDocente.php';
+                                                $DocenteBuscado = buscarDocente($MiConexion,$_POST['Id']);
+                                                $Cant = count($DocenteBuscado);
+                                                if ($Cant==0) { ?>
+                                                    <div class="alert alert-dismissible alert-danger">
+                  <strong>Número de docente no válido</strong>
+                </div>
+                                          <?php      } else {
+                                            $_POST['Apellido'] = $DocenteBuscado['APELLIDO'];
+                                            $_POST['Nombre'] = $DocenteBuscado['NOMBRE'];
+                                            $_POST['DNI'] = $DocenteBuscado['DNI'];
+                                            $_POST['FechaNacim'] = $DocenteBuscado['FECHANACIM'];
+                                            $_POST['NroLegajoJunta'] = $DocenteBuscado['NROLEGAJOJUNTA'];
+                                            $_POST['Titulo'] = $DocenteBuscado['TITULO'];
+                                            $_POST['FechaEscalafon'] = $DocenteBuscado['FECHAESCALAFON'];
+                                            $_POST['categorias'] = $DocenteBuscado['CATEGORIA'];
+                                            $_POST['Mail'] = $DocenteBuscado['MAIL'];
+                                            $_POST['UltIngreso'] = $DocenteBuscado['ULTINGRESO'];
+                                          }
+                                            }
+
+                                            if(!empty($_POST['EspCurr'])) {
+                                                if (empty($_POST['DNI'])) { ?>
+                                                    <div class="alert alert-dismissible alert-danger">
+                  <strong>Primero debe seleccionar un docente</strong>
+              </div>
+                                               <?php } else {
+                                                    $_SESSION['DNIDocenteElegido'] = $_POST['DNI'];
+                                                    $_SESSION['Envia'] = 'buscarUnDocente.php';
+                                                    header('Location: EspCurrXDocente.php');
+                                                }
+                                            }?>
+                                                
+                                                 <label >Nro</label>
+                                            <input class="form-control" name="Id" value="<?php echo !empty($_POST['Id']) ? $_POST['Id'] : ''; ?>">
+                                            <button class="btn btn-default" type="submit" value="Buscar" name="Buscar">Buscar
+                                                </button>
+                                   <!--     <fieldset disabled> -->
+                                        <div class="form-group">
+                                            <label for="disabledSelect">Apellido</label>
+                                            <input class="form-control" name="Apellido" 
+                                                value="<?php echo !empty($_POST['Apellido']) ? $_POST['Apellido'] : ''; ?>" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="disabledSelect">Nombre</label>
+                                            <input class="form-control" name="Nombre" value="<?php echo !empty($_POST['Nombre']) ? $_POST['Nombre'] : ''; ?>" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="disabledSelect">DNI</label>
+                                            <input class="form-control" name="DNI" value="<?php echo !empty($_POST['DNI']) ? $_POST['DNI'] : ''; ?>" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="disabledSelect">Fecha de Nacimiento</label>
+                                            <input id="date" type="date" name="FechaNacim" value="<?php echo !empty($_POST['FechaNacim']) ? $_POST['FechaNacim'] : ''; ?>" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="disabledSelect">Número de Legajo en Junta</label>
+                                            <input class="form-control" name="NroLegajoJunta" value="<?php echo !empty($_POST['NroLegajoJunta']) ? $_POST['NroLegajoJunta'] : ''; ?>" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="disabledSelect">Título</label>
+                                            <textarea class="form-control" rows="3" name="Titulo" readonly><?php echo !empty($_POST['Titulo']) ? $_POST['Titulo'] : ''; ?></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="disabledSelect">Fecha de Escalafón</label>
+                                            <input id="date" type="date" name="FechaEscalafon" value="<?php echo !empty($_POST['FechaEscalafon']) ? $_POST['FechaEscalafon'] : ''; ?>" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="disabledSelect">Categoría</label>
+                                            <div class="radio">
+                                                <label class="radio-inline" for="disabledSelect">
+                                                    <input type="radio" name="categorias" id="1" value="1" <?php echo (!empty($_POST['categorias'])) && ($_POST['categorias']=='Coordinador/a') ? 'checked':''; ?> readonly>Coordinador/a
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="radio-inline" for="disabledSelect">
+                                                    <input type="radio" name="categorias" id="2" value="2" <?php echo (!empty($_POST['categorias'])) && ($_POST['categorias']=='Secretario/a') ? 'checked':''; ?> readonly>Secretario/a
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label class="radio-inline" for="disabledSelect">
+                                                    <input type="radio" name="categorias" id="3" value="3" <?php echo (!empty($_POST['categorias'])) && ($_POST['categorias']=='Preceptor/a') ? 'checked':''; ?> readonly>Preceptor/a
+                                                </label>
+                                            </div>
+                                            <div class="radio">                   
+                                                <label class="radio-inline" for="disabledSelect">
+                                                    <input type="radio" name="categorias" id="4" value="4"  <?php echo (!empty($_POST['categorias'])) && ($_POST['categorias']=='Docente') ? 'checked':''; ?> readonly>Docente
+                                                </label>
+                                            </div>
+                                       
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="disabledSelect">e-mail</label>
+                                            <input class="form-control" name="Mail" value="<?php echo !empty($_POST['Mail']) ? $_POST['Mail'] : ''; ?>" readonly>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="disabledSelect">Último Ingreso</label>
+                                                <input class="form-control" id="disabledInput" type="text" name="UltIngreso" value="<?php echo !empty($_POST['UltIngreso']) ? $_POST['UltIngreso'] : ''; ?>" readonly>
+                                            </div>
+                                      <!--  </fieldset> -->
+                                        <button type="submit" class="btn btn-default" value="Cancelar" name="Cancelar" style="background-color: #fb0000; color: white;" >Cancelar</button>
+                                        <br>
+                                        <center>
+                                            <div>
+                                                <button type="submit" class="btn btn-default" value="EspCurr" name="EspCurr" style="background-color: #888ffc" >Espacios Curriculares a Cargo</button>
+                                            </div>
+                                        </center>
+                                        
+                                
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+</body>
+
+</html>

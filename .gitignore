@@ -1,0 +1,5 @@
+#Ignorar los siguientes archivos
+README.md
+package.json
+dbcalificacionesproa.sql.zip
+Papercut.Setup.exe
