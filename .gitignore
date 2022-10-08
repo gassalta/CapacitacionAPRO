@@ -1,4 +1,5 @@
 #Ignorar los siguientes archivos
+pages/funciones/conexion.php
 README.md
 package.json
 dbcalificacionesproa.sql.zip
