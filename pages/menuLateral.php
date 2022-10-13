@@ -150,9 +150,9 @@ $CantidadEspCurr = count($EspsCurrs);
                                 
                                 <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">Estudiantes reprobados</a>
+                                    <a href="estudiantesNotas.php?tipo=aprobado">Estudiantes aprobados</a>
                                 </li> <li>
-                                    <a href="#">Estudiantes aprobados</a>
+                                    <a href="estudiantesNotas.php?tipo=reprobado">Estudiantes reprobados</a>
                                 </li>
                                 </ul>
                             </li>
