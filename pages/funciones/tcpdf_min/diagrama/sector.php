@@ -1,5 +1,5 @@
 <?php
-require('fpdf.php');
+require(basename(__DIR__.'../../fpdf/fpdf.php'));
 
 class PDF_Sector extends FPDF
 {
