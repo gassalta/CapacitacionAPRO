@@ -136,7 +136,7 @@ $_SESSION['InstanciaEle'] = "";
                                 <div class="col-lg-2"><label>Informes</label></DIV>
                                 <div class="col-lg-6">
                                     <select class="form-control" name="informe" onchange="location = this.value;">
-                                        <option selected>Seleccione un informe</option>
+                                        <option value="#" selected>Seleccione un informe</option>
                                         <option value="aaaMateriaMasCursadaPDF.php" >Consulta de las materias más cursadas</option>
                                         <option value="" disabled>Consultar promedio de materia más baja.</option>
                                         <option value="" disabled>Curso con materias de notas más alto.</option>
