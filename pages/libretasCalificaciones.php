@@ -11,6 +11,8 @@ if (tiempoCumplido()) {
   header('Location: cerrarSesion.php');
   exit;
 }
+define('FPDF_FONTPATH','funciones/font/');
+
 require_once 'funciones/buscarCurso.php';
 //Conecto con la base de datos
 require_once 'funciones/conexion.php';

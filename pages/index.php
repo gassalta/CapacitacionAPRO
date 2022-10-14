@@ -99,10 +99,74 @@ $_SESSION['InstanciaEle'] = "";
                     </div>
                 </div>
             </div>
+            <div class="row" align="center">
+                <div class="col-lg-10">
+                    <div class="tile">
+                        <h2 class="tile-title">
+                            <font color="#85C1E9">
+                                <center><b>Informes de Alumnos y Materias</b>
+                            </font>
+                            </center>
+                        </h2>
+                    </div>
+                </div>
+            </div> <!-- /.row titulo --><br>
+            <div class="row">
+
+                <div class="col-lg-10">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading"></div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form role="form" method="post">
+                                        <?php
+                                        //Si cancela vuelvo a administrarEspaciosCursos
+                                        if (!empty($_POST['Cancelar'])) {
+                                            header('Location: index.php');
+                                        }
+
+                                        ?>
+                                </div>
+                                <!--Cierra col errores-->
+                            </div>
+                            <!--Cierra Row errores--><br>
+                            <div class="row">
+                                <div class="col-lg-2"></div>
+                                <div class="col-lg-2"><label>Informes</label></DIV>
+                                <div class="col-lg-6">
+                                    <select class="form-control" name="informe" onchange="location = this.value;">
+                                        <option selected>Seleccione un informe</option>
+                                        <option value="aaaMateriaMasCursadaPDF.php" >Consulta de las materias más cursadas</option>
+                                        <option value="" disabled>Consultar promedio de materia más baja.</option>
+                                        <option value="" disabled>Curso con materias de notas más alto.</option>
+                                        <option value="" disabled>Curso con materias de notas más bajo.</option>
+                                        <option value="" disabled>Mejor promedio de alumno de la escuela.</option>
+                                        <option value="" disabled>Mejores 3 promedios de alumnos del último curso.</option>
+                                        <option value="" disabled>Buscar alumno por dni.</option>
+                                        <option value="" disabled>Buscar docente por dni.</option>
+
+                                    </select>
+                                </DIV>
+                            </div><!-- row busqueda--><br><br>
+
+
+                            <div class="row" align="center">
+
+                                <div class="col-lg-12">
+                                <!--     <button type="submit" class="btn btn-primary" value="EmitiInformes" name="EmitirInformes">
+                                        <box-icon type='solid' name='user-detail' size="sm" color="white" animation="tada"></box-icon> Emitir Informes de Contenidos y Aprendizajes de los Estudiantes del Curso
+                                    </button> -->
+                                </div>
+                            </div>
+
+
+                        </div> <!-- /.panel-body -->
+                    </div> <!-- /.panel primary -->
+                </div> <!-- /.col principal-->
+            </div> <!-- /.row principal -->
         </div>
     </div>
-    </div>
-
     <!-- jQuery ** permite colapsar y despleagar los menú** -->
     <script src="../vendor/jquery/jquery.min.js"></script>
 
