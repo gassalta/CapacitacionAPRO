@@ -3,7 +3,7 @@
 require_once 'funciones/conexion.php';
 $MiConexion = ConexionBD();
 
-require('funciones/tcpdf_min/diagrama/diag.php');
+require('funciones/diagrama/diag.php');
 define('FPDF_FONTPATH', 'funciones/font/');
 $pdf = new PDF_Diag();
 $pdf->AddPage();
