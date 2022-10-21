@@ -68,7 +68,7 @@ $pdf->Cell(0, 5, 'MATERIAS MAS CURSADAS', 0, 1);
 $pdf->Ln(8);
 $valX = $pdf->GetX();
 $valY = $pdf->GetY();
-$pdf->BarDiagram(190, 70, $data, '%l : %v (%p)', array(255, 175, 100));
+$pdf->BarDiagram(190, 70, $data, '%l : %v Alumnos (%p)', array(255, 175, 100));
 $pdf->SetXY($valX, $valY + 80);
 
 $pdf->Output();
