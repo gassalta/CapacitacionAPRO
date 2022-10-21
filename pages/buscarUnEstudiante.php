@@ -289,7 +289,9 @@ $CantTutores = count($ListadoTutores);
                 </select></div>
 			<!--<div class="col-lg-5"><label></label> <button type="submit" class="btn btn-primary" value="RegCurso" name="RegCurso"><box-icon  name="edit" type="solid" size="sm" color="white" animation="tada-hover"></box-icon> Registrar Curso Actual</button></div>-->
 		</div></div><br><br><!-- septima linea-->
-		<div class="row" align="center"><div class="col-lg-12"><button type="submit" class="btn btn-danger" value="Cancelar" name="Cancelar" ><box-icon  name="arrow-back" type="solid" size="sm" color="white" animation="tada"></box-icon> Retornar</button></div>
+		<!-- <div class="row" align="center"><div class="col-lg-12">
+      <button type="submit" class="btn btn-danger" value="Cancelar" name="Cancelar" ><box-icon  name="arrow-back" type="solid" size="sm" color="white" animation="tada"></box-icon> Retornar</button>
+    </div> -->
 		</div><!-- row boton--><br>
                                    
                                        

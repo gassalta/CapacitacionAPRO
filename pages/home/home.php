@@ -79,14 +79,16 @@
                             <option value="#" selected>Seleccione un informe</option>
                             <option value="aaaMateriaMasCursadaPDF.php">Consulta de las materias más cursadas</option>
                             <option value="home/promediomateriabaja.php">Consultar promedio de materia más baja.</option>
-                            <option value="" disabled>Curso con materias de notas más alto.</option>
-                            <option value="" disabled>Curso con materias de notas más bajo.</option>
-                            <option value="" disabled>Mejor promedio de alumno de la escuela.</option>
-                            <option value="home/mejorpromediodealumnos.php">Mejores 3 promedios de alumnos del último curso.</option>
+                            <option value="home/mejorpromediodealumnos.php?f=3">Mejores 9 promedios de alumnos del 3er curso.</option>
+                            <option value="home/mejorpromediodealumnos.php?f=4">Mejores 9 promedios de alumnos del 4to curso.</option>
                             <option value="?p=buscarAlumnoxDni">Buscar alumno por dni.</option>
                             <option value="?p=buscardocentexdni">Buscar docente por dni.</option>
-
                         </select>
+                        <!--  OPCIONES POSIBLES -->
+                        <!-- <option value="" disabled>Curso con materias de notas más alto.</option>
+                            <option value="" disabled>Curso con materias de notas más bajo.</option>
+                            <option value="" disabled>Mejor promedio de alumno de la escuela.</option>
+                         -->
                     </DIV>
                 </div><!-- row busqueda--><br><br>
                 <script type="text/javascript">

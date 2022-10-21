@@ -158,7 +158,7 @@ $DocenteEncontrado = 0; //0-No - 1-Sí
 	
 		
 				<div class="row" align="center">
-				<div class="col-lg-12"><button type="button" onclick="window.history.back();" class="btn btn-danger" value="Cancelar" name="Cancelar"><box-icon  name="arrow-back" type="solid" size="sm" color="white" animation="tada"  ></box-icon> Retornar</button></div>
+				<!-- <div class="col-lg-12"><button type="button" onclick="window.history.back();" class="btn btn-danger" value="Cancelar" name="Cancelar"><box-icon  name="arrow-back" type="solid" size="sm" color="white" animation="tada"  ></box-icon> Retornar</button></div> -->
                 </div>  <!--fin row botones --><br>
       
      </div>   <!-- /.panel-body -->

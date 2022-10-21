@@ -27,7 +27,7 @@
                         $dni = isset($_POST['dni']) ? $_POST['dni'] : '';
 
                         if ($dni != '') {
-                            $SQL = "SELECT e.id,e.nroLegajo,CONCAT(e.apellido,', ',e.nombre) nombres,e.dni FROM estudiantes e WHERE e.dni = '{$dni}';";
+                            $SQL = "SELECT e.id,e.nroLegajo,CONCAT(e.apellido,', ',e.nombre) nombres,e.dni FROM estudiantes e WHERE e.dni = '{$dni}' LIMIT 1;";
                             $rs = mysqli_query($MiConexion, $SQL);
                             if ($rs->num_rows > 0) {
                                 while ($row = $rs->fetch_assoc()) {
