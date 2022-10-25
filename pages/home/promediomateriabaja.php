@@ -21,74 +21,48 @@ $rs = mysqli_query($MiConexion, $SQL);
 
 $keys = [];
 $values = [];
-if ($rs->num_rows > 0) {
-    while ($row = $rs->fetch_assoc()) {
+$color = [];
 
-        $keys[] = $row['Denominacion'];
-        $values[] = number_format($row['promedio'],3,'.','');
-    }
+function getColor($num)
+{
+    $hash = md5('color' . $num); // modify 'color' to get a different palette
+    return array(
+        hexdec(substr($hash, 0, 2)), // r
+        hexdec(substr($hash, 2, 2)), // g
+        hexdec(substr($hash, 4, 2))
+    ); //b
 }
 
-
-/* $data = [
-    'Formacion Especializada' =>    17,
-    'Ciencias Sociales' =>    10,
-    'Ciencias Naturales' =>    7,
-    'Matematica' =>    5,
-    'Lengua' => 4,
-    'Lengua Extranjera' =>    4,
-    'Educacion Fisica' => 4,
-    'Educacion Artistica' => 4
-]; */
-
-/* $keys = ['sky', 'grass', 'orange'];
-$values = ['blue', 'green', 'orange']; */
-
-$data = array_combine($keys, $values);
-
-/* echo '<pre>';
-print_r($data);
-echo '</pre>'; */
-
-
-/* echo "<pre>";
-print_r($data);
-echo "</pre>";
- */
-
-/* //Pie chart
+ //Pie chart
 $pdf->SetFont('Arial', 'BIU', 12);
-$pdf->Cell(0, 5, '1 - Pie chart', 0, 1);
+$pdf->Cell(0, 5, 'PROMEDIO MATERIAS MAS BAJAS', 0, 1);
 $pdf->Ln(8);
 
 $pdf->SetFont('Arial', '', 10);
 $valX = $pdf->GetX();
 $valY = $pdf->GetY();
-$pdf->Cell(30, 5, 'Number of men:');
-$pdf->Cell(15, 5, $data['Men'], 0, 0, 'R');
-$pdf->Ln();
-$pdf->Cell(30, 5, 'Number of women:');
-$pdf->Cell(15, 5, $data['Women'], 0, 0, 'R');
-$pdf->Ln();
-$pdf->Cell(30, 5, 'Number of children:');
-$pdf->Cell(15, 5, $data['Children'], 0, 0, 'R');
-$pdf->Ln();
-$pdf->Ln(8);
 
-$pdf->SetXY(90, $valY);
-$col1=array(100,100,255);
-$col2=array(255,100,100);
-$col3=array(255,255,100);
-$pdf->PieChart(100, 35, $data, '%l (%p)', array($col1,$col2,$col3));
-$pdf->SetXY($valX, $valY + 40); */
+if ($rs->num_rows > 0) {
+    $i = 0;
+    while ($row = $rs->fetch_assoc()) {
 
-//Bar diagram
-$pdf->SetFont('Arial', 'BIU', 12);
-$pdf->Cell(0, 5, 'PROMEDIO MATERIAS MAS BAJAS', 0, 1);
-$pdf->Ln();
-$valX = $pdf->GetX();
-$valY = $pdf->GetY();
-$pdf->BarDiagram(190, 70, $data, '%l : %v (%p)', array(255, 175, 100));
+        $keys[] = $row['Denominacion'];
+        $values[] = $row['promedio'];
+
+        $numero_color = rand(50, 999);
+        $color[] = getColor($numero_color);
+
+        $i++;
+
+    }
+}
+
+$data = array_combine($keys, $values);
+
+$pdf->SetXY(15, 20);
+
+$pdf->PieChart(150, 115, $data, '%l (%p)', $color);
 $pdf->SetXY($valX, $valY + 80);
+
 
 $pdf->Output();

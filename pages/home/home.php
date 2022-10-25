@@ -40,11 +40,11 @@
     </div>
 </div> <!--  end aviso -->
 <div class="row" align="center">
-    <div class="col-lg-10">
+    <div class="col-lg-12">
         <div class="tile">
             <h2 class="tile-title">
                 <font color="#85C1E9">
-                    <center><b>Informes de Alumnos, Docentes y Materias</b>
+                    <center><b>Reportes y Consultas</b>
                 </font>
                 </center>
             </h2>
@@ -77,7 +77,7 @@
                     <div class="col-lg-6">
                         <select class="form-control" name="informe" id="informe">
                             <option value="#" selected>Seleccione un informe</option>
-                            <option value="aaaMateriaMasCursadaPDF.php">Consulta de las materias más cursadas</option>
+                            <option value="home/materiamascursada.php">Consulta de las materias más cursadas</option>
                             <option value="home/promediomateriabaja.php">Consultar promedio de materia más baja.</option>
                             <option value="home/mejorpromediodealumnos.php?f=3">Mejores 9 promedios de alumnos del 3er curso.</option>
                             <option value="home/mejorpromediodealumnos.php?f=4">Mejores 9 promedios de alumnos del 4to curso.</option>
