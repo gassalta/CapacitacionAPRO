@@ -2,7 +2,7 @@
 function Listar_Estudiantes($vConexion) {
     $Listado=array();
 
-    	$SQL = "SELECT E.id, E.nroLegajo, E.nroLibroMatriz, E.nroFolio, E.apellido, E.nombre, E.dni, E.telefono, E.mail, N.nacion AS nacionalidad, E.escDeProcedencia, C.Anio AS anio, C.Division AS division, E.lugarNacim, E.fechaNacim, E.domicilio, B.nombre AS barrio, E.fechaPreinscripcion
+    	$SQL = "SELECT DISTINCT E.id, E.nroLegajo, E.nroLibroMatriz, E.nroFolio, E.apellido, E.nombre, E.dni, E.telefono, E.mail, N.nacion AS nacionalidad, E.escDeProcedencia, C.Anio AS anio, C.Division AS division, E.lugarNacim, E.fechaNacim, E.domicilio, B.nombre AS barrio, E.fechaPreinscripcion
         FROM estudiantes E, nacionalidades N, cursos C, barrios B
         WHERE E.nacionalidad = N.id AND E.curso = C.Id AND E.barrio = B.id AND C.Anio!='Sin Curso'
         ORDER BY E.curso, E.apellido, E.nombre";

@@ -11,7 +11,7 @@ if (tiempoCumplido()) {
   header('Location: cerrarSesion.php');
   exit;
 }
-define('FPDF_FONTPATH','funciones/font/');
+define('FPDF_FONTPATH', 'funciones/font/');
 
 require_once 'funciones/buscarCurso.php';
 //Conecto con la base de datos
@@ -274,10 +274,10 @@ $Listo2 = 0;
               if (!empty($_POST['DescargarLibretas'])) {
                 header('Location: funciones/generarZipConLibretas.php');
 
-                /* foreach (glob("*.pdf") as $filename) {
-   echo "$filename size " . filesize($filename) . "\n";
-   unlink($filename);
-}  */
+                foreach (glob("*.pdf") as $filename) {
+                  echo "$filename size " . filesize($filename) . "\n";
+                  unlink($filename);
+                }
               }
               ?>
               <br>

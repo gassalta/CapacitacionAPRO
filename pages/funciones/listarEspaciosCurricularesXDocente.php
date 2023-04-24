@@ -2,10 +2,10 @@
 function ListarEspCurrXDocente($vConexion,$id) {
     $Listado=array();
 
-    	$SQL = "SELECT EP.Id, EP.NombreEspacCurric,CUR.Anio AS Anio,CUR.Division AS Division,A.Denominacion AS Area
-        FROM espacioscurriculares EP,cursos CUR,areas A
-        WHERE EP.Docente = '$id' AND EP.Curso = CUR.Id AND EP.Area = A.Id
-        ORDER BY EP.NombreEspacCurric";
+    	$SQL = "SELECT DISTINCT * FROM espacioscurriculares ec
+        INNER JOIN cursos cur ON ec.Curso = cur.Id
+        INNER JOIN areas a ON ec.Area = a.Id 
+        WHERE ec.Docente = '{$id}'";
 
      $rs = mysqli_query($vConexion, $SQL);
         
@@ -82,4 +82,3 @@ function ListarEspCurrXCurso($vConexion,$idCurso) {
     }
     return $Listado;
 }
-?>

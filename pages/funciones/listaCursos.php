@@ -2,7 +2,7 @@
 function ListarCursos($vConexion) {
     $Listado=array();
 
-    	$SQL = "SELECT Id, Anio, Division
+    	$SQL = "SELECT DISTINCT Id, Anio, Division
         FROM cursos 
         WHERE Anio!='Sin Curso'
         ORDER BY Id";
@@ -25,7 +25,7 @@ function ListarCursos($vConexion) {
 function ListarCursosComp($vConexion) {
     $Listado=array();
 
-        $SQL = "SELECT Id, Anio, Division
+        $SQL = "SELECT DISTINCT Id, Anio, Division
         FROM cursos 
         ORDER BY Id";
 

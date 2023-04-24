@@ -55,7 +55,7 @@ $pagina = isset($_GET['p']) ? strtolower($_GET['p']) : 'home';
         <?php
         //Llamo a los menúes y funciones necesarias
         require_once 'top.php';
-        require_once 'menuDerecho.php';
+        require_once 'menuDerecho.php'; // Menu superior derecho
         require_once 'funciones/DatosUsuario.php';
         require_once 'menuLateral.php';
         ?>

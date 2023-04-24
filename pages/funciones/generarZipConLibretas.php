@@ -48,5 +48,3 @@ unlink($nombreArchivoZip);
 } else {
     echo "Error creando archivo";
 }
-
-?>

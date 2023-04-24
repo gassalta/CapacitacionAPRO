@@ -2,7 +2,7 @@
 function Listar_Docentes($vConexion) {
     $Listado=array();
 
-    	$SQL = "SELECT D.Id, D.Apellido, D.Nombre, D.DNI, D.FechaNacim, D.NroLegajoJunta, D.Titulo, D.FechaEscalafon, C.Denominacion AS Categoria, D.Mail, D.UltIngreso
+    	$SQL = "SELECT DISTINCT D.Id, D.Apellido, D.Nombre, D.DNI, D.FechaNacim, D.NroLegajoJunta, D.Titulo, D.FechaEscalafon, C.Denominacion AS Categoria, D.Mail, D.UltIngreso
         FROM docentes D,categorias C
         WHERE D.Categoria = C.Id
         ORDER BY D.Apellido";

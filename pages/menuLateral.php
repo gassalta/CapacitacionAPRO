@@ -55,11 +55,6 @@ $CantidadEspCurr = count($EspsCurrs);
                         </li>
 
                     </ul>
-
-
-
-
-
                 </li>
             <?php }
             if ($_SESSION['Categoria'] == 'Coordinador/a') { ?>
@@ -147,13 +142,14 @@ $CantidadEspCurr = count($EspsCurrs);
                             </li>
                             <li>
                                 <a href="#">Gestion Estudiante <box-icon class="border border-secondary border-3 rounded-circle" name="chevrons-down" size="md" color="#3498DB" animation="tada-hover"></box-icon></a>
-                                
+
                                 <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="estudiantesNotas.php?tipo=aprobado">Estudiantes aprobados</a>
-                                </li> <li>
-                                    <a href="estudiantesNotas.php?tipo=reprobado">Estudiantes reprobados</a>
-                                </li>
+                                    <li>
+                                        <a href="estudiantesNotas.php?tipo=aprobado">Estudiantes aprobados</a>
+                                    </li>
+                                    <li>
+                                        <a href="estudiantesNotas.php?tipo=reprobado">Estudiantes reprobados</a>
+                                    </li>
                                 </ul>
                             </li>
 

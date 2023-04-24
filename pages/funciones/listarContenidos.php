@@ -2,7 +2,7 @@
 function Listar_Contenidos($vConexion,$espCurric) {
     $Listado=array();
 
-    	$SQL = "SELECT id, denominacion, estado
+    	$SQL = "SELECT DISTINCT id, denominacion, estado
         FROM contenidos 
         WHERE espacioCurricular='$espCurric'
         ORDER BY id";
@@ -12,7 +12,7 @@ function Listar_Contenidos($vConexion,$espCurric) {
      $i=0;
     while ($data = mysqli_fetch_array($rs)) {
             $Listado[$i]['ID'] = $data['id'];
-            $Listado[$i]['DENOMINACION'] = $data['denominacion'];
+            $Listado[$i]['DENOMINACION'] = utf8_decode($data['denominacion']);
             $Listado[$i]['ESTADO'] = $data['estado'];
             $i++;
     }

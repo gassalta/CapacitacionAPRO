@@ -2,7 +2,7 @@
 function Listar_EspCurr($vConexion) {
     $Listado=array();
 
-    	$SQL = "SELECT EC.Id, EC.NombreEspacCurric,CUR.Anio AS Anio,CUR.Division AS Division,A.Denominacion AS Area
+    	$SQL = "SELECT DISTINCT EC.Id, EC.NombreEspacCurric,CUR.Anio AS Anio,CUR.Division AS Division,A.Denominacion AS Area
         FROM espacioscurriculares EC,cursos CUR,areas A
         WHERE EC.Curso = CUR.Id AND EC.Area = A.Id
         ORDER BY EC.Curso, EC.NombreEspacCurric";
@@ -12,7 +12,7 @@ function Listar_EspCurr($vConexion) {
      $i=0;
     while ($data = mysqli_fetch_array($rs)) {
             $Listado[$i]['ID'] = $data['Id'];
-            $Listado[$i]['NOMBREESPACCURRIC'] = $data['NombreEspacCurric'];
+            $Listado[$i]['NOMBREESPACCURRIC'] = utf8_decode($data['NombreEspacCurric']);
             $Listado[$i]['ANIO'] = $data['Anio'];
             $Listado[$i]['DIVISION'] = $data['Division'];
             $Listado[$i]['AREA'] = $data['Area'];
