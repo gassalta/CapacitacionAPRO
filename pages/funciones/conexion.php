@@ -7,7 +7,8 @@ function ConexionBD($Host = 'localhost' ,  $User = 'root',  $Password = '', $Bas
         return $linkConexion;
     }else {
         die ('No se pudo establecer la conexión.');
-}
+    }
 }
 
-?>
+define('URL','http://localhost/CalificacionesPROA/');
+$URL = 'http://localhost/CalificacionesPROA/';
